@@ -1,6 +1,3 @@
-$OMP=0
-$rwt=0
-
 $file = MRCP-AM_visualization.pin
 # ----------------------------------------------------------------------------
 #    name               : MRCP PHANTOM                                        
@@ -8,6 +5,8 @@ $file = MRCP-AM_visualization.pin
 #    author             : Bangho Shin  
 # ----------------------------------------------------------------------------
 
+$OMP=0
+$rwt=0
 [ title ]
 Prostate Cx
 

@@ -1,0 +1,328 @@
+$OMP=0
+$rwt=0
+
+$file = MRCP-AM_visualization.pin
+# ----------------------------------------------------------------------------
+#    name               : MRCP PHANTOM                                        
+#    sex                : MALE                                              
+#    author             : Bangho Shin  
+# ----------------------------------------------------------------------------
+
+[ title ]
+Prostate Cx
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =           100000     # Sumbernya pake 1000000 #(D=10) number of particles per one batch
+ maxbch   =           10     # (D=10) number of batches
+ itetvol  =           0     # (D=0) =1 Volume calculation for tetrahedrons
+ ntetelem =        2000     # (D=200) Number of tetra element allowed in sub-block
+ mdbatima =        5000
+ itetra   =           0     # (D=0) tetra data is read(=1)/write(=2) on binary
+ ndedx    = 3 $ stopping power pake ATIMA
+ ielas    = 2 $Include neutron and proton elastic scattering
+ file(1) = c:/phits
+ 
+[ S o u r c e ]                                 
+ #sinar 1 315 derajat 
+ $<source> = 1$
+ $trcl = 1$
+ $    totfact = 6E+0$8$
+ $        s-type = 1$
+ $            proj = proton$
+ $            x0   = 0 $9.195$
+ $            x1   = 0 $6.695 $
+ $            y0   = 0 $1.6489 $-15.4813959 $90d = -10.947 $-9.6979 $#arah inar $datang, didapatkan dari perhitungan sudut 
+ $            z0   = 0 $49.433
+ $            z1   = 0 $49.433
+ $            r0   = 0.55
+ $            dir  = -1  
+ $            e0   = 132 #diganti sesuai kedalaman
+ 
+ #sinar 2 0 derajat
+$<source> = 1
+$trcl = 2
+$    totfact = 6E+08
+$        s-type = 1
+$            proj = proton
+$            x0   = 0 $9.195
+$            x1   = 0 $6.695   
+$            y0   = 0 $1.6489 $-15.4813959 $90d = -10.947 $-9.6979 $#arah sinar datang, didapatkan dari perhitungan sudut 
+$            z0   = 0 $49.433
+$            z1   = 0 $49.433
+$            r0   = 0.55
+$            dir  = -1  
+$            e0   = 116
+
+#sinar 3
+$<source> = 1
+$trcl = 3
+$    totfact = 6E+08
+$        s-type = 1
+$            proj = proton
+$            x0   = 0 $9.195
+$            x1   = 0 $6.695 
+$            y0   = 0 
+$            z0   = 0 
+$            z1   = 0 
+$            r0   = 0.55
+$            dir  = -1  
+$            e0   = 120
+
+#sinar 4 15 derajat
+<source> = 1
+trcl = 5
+    totfact = 6E+08
+        s-type = 1
+            proj = proton
+            x0   = 0 $9.195
+            x1   = 0 $6.695 
+            y0   = 0 
+            z0   = 0 
+            z1   = 0 
+            r0   = 0.55
+            dir  = -1  
+            e0   = 114
+
+[ Transform ]
+$*tr1   -9.99336   -7.34341    0.781405    0  0  0    1 90   3  315   0  0    3
+$*tr2   -0.889954  -7.34341    0.781405    0  0  0    1 90   0  0     0  0    3 
+$*tr3    8.303410  -7.34341    0.781405    0  0  0    1 90   3  45    0  0    3 
+
+$transformasi sumber
+*tr1    -11.99814   0.781405    9.07183        0  0  0    2  315   0 0    0 0  3
+*tr2     -0.88995   0.781405   10.79341        0  0  0    0  0     0 0    0 0  3
+*tr3     10.21823   0.781405    9.07183        0  0  0    2  45    0 0    0 0  3
+
+*tr4      6.20791   0.781405   10.80751        0  0  0     2  30    0 0   0 0   3
+*tr5      2.51125   0.781405   11.20711        0  0  0     2  15    0 0   0 0   3
+*tr6     17.59274   0.781405    9.34341        0  0  0     2  60    0 0   0 0   3
+
+*tr7     -4.29115    0.781405   10.80751        0  0  0     2 345    0 0  0 0    3
+*tr8     -7.98781    0.781405   11.20711        0  0  0     2 330    0 0  0 0    3
+*tr9    -19.37264    0.781405    9.34341        0  0  0     2 300    0 0  0 0    3
+
+$transformasi r-z
+*tr10    -0.889954   0.781405    0       0  0  0     2  315    0 0   0 0    3
+*tr11    -0.889954   0.781405    0       0  0  0     2  0      0 0   0 0    3
+*tr12    -0.889954   0.781405    0       0  0  0     2  45     0 0   0 0    3
+ 
+*tr13    -0.889954   0.781405    0       0  0  0     2  30     0 0   0 0    3
+*tr14    -0.889954   0.781405    0       0  0  0     2  15     0 0   0 0    3
+*tr15    -0.889954   0.781405    0       0  0  0     2  60     0 0   0 0    3
+ 
+*tr16    -0.889954   0.781405    0       0  0  0     2  345     0 0   0 0    3
+*tr17    -0.889954   0.781405    0       0  0  0     2  330     0 0   0 0    3
+*tr18    -0.889954   0.781405    0       0  0  0     2  300     0 0   0 0    3
+
+[ Material ]
+$ ----------------------------------------------------------------------------
+$ MATERIAL DATA FOR EACH ORGAN/TISSUE
+$ ----------------------------------------------------------------------------
+infl:{D:\skripsi23\codehel\helmat.material}
+
+[ Surface ]
+  10  rpp -38.8 38.8  -97.8 97.8  -25.8 25.8  $ Phantom box
+  20  rpp -39   39    -98   98    -26   26
+  90  box -1000 -1000 -1000 2000 0 0 0 2000 0 0 0 2000  $ World boundary
+  
+[ Cell ]
+$ ----------------------------------------------------------------------------
+$ CELLS FOR PHANTOM
+$ ----------------------------------------------------------------------------
+infl:{D:\skripsi23\codehel\helcell.cell}
+
+[ T - Gshow ] off
+     mesh =    xyz            # mesh type is xyz scoring mesh
+   x-type =      2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =    -39       # minimum value of x-mesh points
+     xmax =     39       # maximum value of x-mesh points
+       nx =     60            # number of x-mesh points
+   y-type =      1         # z-mesh is linear given by zmin, zmax and nz
+       ny =     1
+       -98 98
+
+   z-type =      2            # z-mesh is linear given by zmin, zmax and nz
+     $zmin =    -98.00236      # minimum value of z-mesh points
+     $zmax =     98.00236      # maximum value of z-mesh points
+        nz = 1
+      zmin = -26 
+      zmax = 26
+
+     axis =     xz            # axis of output
+     file = Citra_XZ.dat  # file name of output for the above axis
+   output =      2            # (D=2) 1:bnd, 2:bnd+mat, 3:bnd+num 4:bnd+mat+num
+    ginfo =      0            # (D=0) 0:no, 1:show in graph, 2:add file
+    resol =     15            # (D=1) resolution of gshow or rshow
+    width =   0.01            # (D=0.5) width of lines for gshow or rshow
+   epsout =      1            # (D=0) generate eps file by ANGEL
+
+
+[ T - Deposit ] 
+ title  = Energy deposition in xyz mesh
+ mesh   = xyz           # mesh type is xyz scoring mesh
+   x-type =      2            # x-mesh is linear given by xmin, xmax and nx
+     nx   =     180  
+     xmin =    -39       # minimum value of x-mesh points
+     xmax =     39       # maximum value of x-mesh points
+          # number of x-mesh points
+
+   z-type =       2            # y-mesh is given by the below data
+     nz   =     180            # number of y-mesh points
+     zmin =  -26 
+     zmax =   26
+
+    y-type = 1          # z-mesh is linear given by zmin, zmax and nz
+    ny     = 1 
+            -0.218595 1.781405
+
+ unit   = 0             # unit is [Gy/source]
+ material = all         # (D=all) number of specific material
+ output = dose          # total deposit energy
+ axis   = xz            # axis of output
+ file   = Helmi_Variasi1_xz.out
+ part   = all
+ gshow  = 1             # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+ epsout = 1             # (D=0) generate eps file by ANGEL
+
+ [ T - Deposit ] 
+ title  = Energy deposition in xyz mesh
+ mesh   = xyz           # mesh type is xyz scoring mesh
+   y-type =      2            # x-mesh is linear given by xmin, xmax and nx
+     ny   =     180  
+     ymin =     -20       # minimum value of x-mesh points
+     ymax =     20      # maximum value of x-mesh points
+          # number of x-mesh points
+
+   z-type =      2            # y-mesh is given by the below data
+     nz   =     180            # number of y-mesh points
+     zmin = -24.56301 
+     zmax =  24.56301
+
+
+    x-type = 1          # z-mesh is linear given by zmin, zmax and nz
+    nx     = 1 
+           -1.889954 0.110046
+           
+ unit   = 0             # unit is [Gy/source]
+ material = all         # (D=all) number of specific material
+ output = dose          # total deposit energy
+ axis   = yz            # axis of output
+ file   = Helmi_Variasi1_yz.out
+ part   = all
+ gshow  = 1             # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+ epsout = 1             # (D=0) generate eps file by ANGEL
+
+ [ T - Deposit ] 
+ title    = Energy deposition in xyz mesh
+ mesh     = xyz           # mesh type is xyz scoring mesh
+   y-type =      2            # x-mesh is linear given by xmin, xmax and nx
+     ny   =     180  
+     ymin =     -20       # minimum value of x-mesh points
+     ymax =      20      # maximum value of x-mesh points
+          # number of x-mesh points
+
+   x-type =      2            # y-mesh is given by the below data
+     nx   =     180            # number of y-mesh points
+     xmin = -37.8854  
+     xmax =  37.8854 
+
+    z-type = 1          # z-mesh is linear given by zmin, zmax and nz
+    nz     = 1 
+            1.03635 3.03635
+           
+ unit   = 0             # unit is [Gy/source]
+ material = all         # (D=all) number of specific material
+ output = dose          # total deposit energy
+ axis   = xy            # axis of output
+ file   = Helmi_Variasi1_xy.out
+ part   = all
+ gshow  = 1             # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+ epsout = 1             # (D=0) generate eps file by ANGEL
+
+ [ T - Deposit ] 
+ title  = Energy deposition in xyz mesh
+ mesh   = xyz           # mesh type is xyz scoring mesh
+   z-type =      1            # x-mesh is linear given by xmin, xmax and nx
+     $nz   =     180  
+     $zmin =     -20       # minimum value of x-mesh points
+     $zmax =      20      # maximum value of x-mesh points
+      nz = 1    # number of x-mesh points
+        0.25 1.35 $posisi kanker
+
+   x-type =      2            # y-mesh is given by the below data
+     nx   =     180            # number of y-mesh points
+     xmin = -1.439954  
+     xmax = -0.339954 
+
+    y-type = 2          # z-mesh is linear given by zmin, zmax and nz
+        ny = 350 
+      ymin = -10.79341
+      ymax = 3.5
+           
+ unit   = 0             # unit is [Gy/source]
+ material = all         # (D=all) number of specific material
+ output = dose          # total deposit energy
+ axis   = y            # axis of output
+ file   = Dosis_1.out
+ part   = proton all
+ gshow  = 1             # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+ epsout = 1             # (D=0) generate eps file by ANGEL
+ 
+[ T - Deposit ] off
+    title = Energy deposition in reg mesh
+     mesh = reg                     # mesh type is region-wise
+      reg = 2800 2900 4200 7000 7100 7400 7401 7402 7403 8200 8201 8202 8400 8401 8402 8600 10001 10002 11500
+      volume
+      non reg vol                   # reg definition
+      1   2800  133.1657482         $Femora_upper_cortical    
+      2   2900  367.3175931         $Femora_upper_spongiosa   
+      3   4200  552.7846347         $pelvis spongiosa   
+      4   7000  10.05200074         $bladder    
+      5   7100  56.31067896         $bladder content    
+      6   7400  14.02842723         $small intestine wall   
+      7   7401  2.18365             $small intestine wall   
+      8   7402  5.488759492         $small intestine wall   
+      9   7403  810.1218404         $small intestine wall   
+      10  8200  2.6802646           $descending colone wall   
+      11  8201  0.196068229         $descending colone wall   
+      12  8202  112.7735974         $descending colone wall   
+      13  8400  4.29213342          $sigmoid colone wall    
+      14  8401  0.312018086         $sigmoid colone wall    
+      15  8402  46.78352289         $sigmoid colone wall    
+      16  8600  38.55               $rectum wall    
+      17  10001 13.9269             $GTV    
+      18  10002 50.5495             $PTV    
+      19  11500 17.08840367         $prostate   
+
+     unit =    0            # unit is [MeV/cm^3/source]
+ material =  all            # (D=all) number of specific material
+   output =  dose           # total deposit energy
+     axis =   reg           # axis of output
+     file = deposit_reg.out     # file name of output for the above axis
+     part =  proton all      
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+   [ T - Deposit ] 
+   trcl = 14
+    title = depth-dose distribution
+     mesh =  r-z            # mesh type is r-z scoring mesh
+       x0 =   0      # center x-position of r-z mesh
+       y0 =   0      # center y-position of r-z mesh
+   r-type =    1            # r-mesh is linear given by rmin, rmax and nr
+       nr =    1            # number of r-mesh points
+            0 1.1
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   -5       # minimum value of z-mesh points
+     zmax =    15     # maximum value of z-mesh points
+       nz =   200           # number of z-mesh points
+     unit =    0            # unit is [MeV/source)]
+   output =  dose           # total deposit energy
+     axis =     z           # axis of output
+     file = KurvaDosis.out        # file name of output for the above axis
+     part =  proton all
+   epsout =    1
+   gshow  =    1
+   angel  = xlin ylin
+[ End ]

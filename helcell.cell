@@ -1,5 +1,5 @@
 $	CELLS	FOR	PHANTOM				
-00001		14002	-0.0011879	-20				U=15000	LAT=3	tfile=D:\Helmi\codehel\hel_phantom	
+00001		14002	-0.0011879	-20				U=15000	LAT=3	tfile=D:\skripsi23\codehel\hel_phantom	
  00002		0		-10					FILL=15000			
  00003		14002	-0.0011879	-20	10		
  00004		14003	-0.0011879	-90	20		
